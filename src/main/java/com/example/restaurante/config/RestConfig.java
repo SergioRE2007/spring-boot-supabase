@@ -1,26 +1,21 @@
-package com.example.alumnos.config;
+package com.example.restaurante.config;
 
-import com.example.alumnos.entity.Alumno;
-import com.example.alumnos.entity.Curso;
-import com.example.alumnos.entity.Profesor;
+import com.example.restaurante.entity.Chef;
+import com.example.restaurante.entity.Categoria;
+import com.example.restaurante.entity.Plato;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
-// configuracion global de Spring Data REST
 @Configuration
 public class RestConfig implements RepositoryRestConfigurer {
 
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
-        // todos los endpoints de la API salen bajo /api
         config.setBasePath("/api");
+        config.exposeIdsFor(Chef.class, Categoria.class, Plato.class);
 
-        // muestra el campo id en las respuestas JSON
-        config.exposeIdsFor(Alumno.class, Curso.class, Profesor.class);
-
-        // permite peticiones desde cualquier origen (util en desarrollo)
         cors.addMapping("/api/**")
                 .allowedOrigins("*")
                 .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")

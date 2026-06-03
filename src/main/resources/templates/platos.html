@@ -2,62 +2,31 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Restaurante - Dashboard</title>
+    <title>Platos</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Segoe UI', sans-serif; background: #fdf6ec; color: #333; }
-
         header {
-            background: #8b1a1a;
-            color: white;
-            padding: 20px 40px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            background: #8b1a1a; color: white;
+            padding: 20px 40px; display: flex; align-items: center; justify-content: space-between;
         }
         header h1 { font-size: 26px; }
-        nav a {
-            color: #f5c842;
-            text-decoration: none;
-            margin-left: 20px;
-            font-weight: bold;
-        }
+        nav a { color: #f5c842; text-decoration: none; margin-left: 20px; font-weight: bold; }
         nav a:hover { text-decoration: underline; }
-
         .contenedor { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
-
-        .tarjetas {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-bottom: 40px;
+        .btn {
+            display: inline-block; background: #8b1a1a; color: white;
+            padding: 10px 20px; border-radius: 8px; text-decoration: none;
+            font-weight: bold; margin-bottom: 24px;
         }
-        .tarjeta {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            padding: 30px 40px;
-            text-align: center;
-            min-width: 200px;
-            border-top: 5px solid #8b1a1a;
-        }
-        .tarjeta h2 { font-size: 18px; color: #666; margin-bottom: 10px; }
-        .numero { font-size: 52px; font-weight: bold; color: #8b1a1a; }
-
-        .seccion {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            padding: 30px;
-        }
+        .btn:hover { background: #a52020; }
+        .seccion { background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); padding: 30px; }
         .seccion h2 { font-size: 20px; margin-bottom: 20px; color: #8b1a1a; }
-
         table { width: 100%; border-collapse: collapse; }
         th { background: #8b1a1a; color: white; padding: 10px 14px; text-align: left; }
         td { padding: 10px 14px; border-bottom: 1px solid #eee; }
         tr:hover td { background: #fdf0e0; }
-
+        .precio { font-weight: bold; color: #8b1a1a; }
         footer { text-align: center; padding: 30px; color: #999; font-size: 14px; margin-top: 40px; }
     </style>
 </head>
@@ -74,27 +43,14 @@
 </header>
 
 <div class="contenedor">
-    <div class="tarjetas">
-        <div class="tarjeta">
-            <h2>Platos</h2>
-            <div class="numero" th:text="${totalPlatos}">0</div>
-        </div>
-        <div class="tarjeta">
-            <h2>Chefs</h2>
-            <div class="numero" th:text="${totalChefs}">0</div>
-        </div>
-        <div class="tarjeta">
-            <h2>Categorias</h2>
-            <div class="numero" th:text="${totalCategorias}">0</div>
-        </div>
-    </div>
+    <a href="/platos/nuevo" class="btn">+ Nuevo plato</a>
 
     <div class="seccion">
-        <h2>Menu del restaurante</h2>
+        <h2>Todos los platos</h2>
         <table>
             <thead>
                 <tr>
-                    <th>Plato</th>
+                    <th>Nombre</th>
                     <th>Descripcion</th>
                     <th>Precio</th>
                     <th>Categoria</th>
@@ -105,7 +61,7 @@
                 <tr th:each="plato : ${platos}">
                     <td th:text="${plato.nombre}">-</td>
                     <td th:text="${plato.descripcion}">-</td>
-                    <td th:text="${'€' + plato.precio}">-</td>
+                    <td class="precio" th:text="${'€' + plato.precio}">-</td>
                     <td th:text="${plato.categoria != null ? plato.categoria.nombre : '-'}">-</td>
                     <td th:text="${plato.chef != null ? plato.chef.nombre : '-'}">-</td>
                 </tr>
@@ -118,6 +74,5 @@
 </div>
 
 <footer>Mi Restaurante &mdash; Spring Boot + Supabase</footer>
-
 </body>
 </html>

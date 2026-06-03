@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nuevo Chef</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', sans-serif; background: #fdf6ec; color: #333; }
+        header {
+            background: #8b1a1a; color: white;
+            padding: 20px 40px; display: flex; align-items: center; justify-content: space-between;
+        }
+        header h1 { font-size: 26px; }
+        nav a { color: #f5c842; text-decoration: none; margin-left: 20px; font-weight: bold; }
+        nav a:hover { text-decoration: underline; }
+        .contenedor { max-width: 600px; margin: 40px auto; padding: 0 20px; }
+        .formulario { background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); padding: 40px; }
+        .formulario h2 { font-size: 22px; color: #8b1a1a; margin-bottom: 30px; }
+        .campo { margin-bottom: 20px; }
+        label { display: block; font-weight: bold; margin-bottom: 6px; color: #555; }
+        input {
+            width: 100%; padding: 10px 14px; border: 1px solid #ddd;
+            border-radius: 8px; font-size: 15px;
+        }
+        input:focus { outline: none; border-color: #8b1a1a; }
+        .botones { display: flex; gap: 12px; margin-top: 30px; }
+        .btn-guardar {
+            background: #8b1a1a; color: white; border: none;
+            padding: 12px 28px; border-radius: 8px; font-size: 15px;
+            font-weight: bold; cursor: pointer;
+        }
+        .btn-guardar:hover { background: #a52020; }
+        .btn-cancelar {
+            background: #eee; color: #333; text-decoration: none;
+            padding: 12px 28px; border-radius: 8px; font-size: 15px; font-weight: bold;
+        }
+        footer { text-align: center; padding: 30px; color: #999; font-size: 14px; margin-top: 40px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>&#127859; Mi Restaurante</h1>
+    <nav>
+        <a href="/dashboard">Inicio</a>
+        <a href="/platos">Platos</a>
+        <a href="/chefs">Chefs</a>
+        <a href="/categorias">Categorias</a>
+    </nav>
+</header>
+
+<div class="contenedor">
+    <div class="formulario">
+        <h2>Nuevo Chef</h2>
+        <form th:action="@{/chefs/guardar}" th:object="${chef}" method="post">
+            <div class="campo">
+                <label>Nombre</label>
+                <input type="text" th:field="*{nombre}" placeholder="Nombre del chef" required />
+            </div>
+            <div class="campo">
+                <label>Especialidad</label>
+                <input type="text" th:field="*{especialidad}" placeholder="Ej: Cocina mediterranea" />
+            </div>
+            <div class="campo">
+                <label>Email</label>
+                <input type="email" th:field="*{email}" placeholder="chef@restaurante.com" />
+            </div>
+            <div class="botones">
+                <button type="submit" class="btn-guardar">Guardar</button>
+                <a href="/chefs" class="btn-cancelar">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<footer>Mi Restaurante &mdash; Spring Boot + Supabase</footer>
+</body>
+</html>

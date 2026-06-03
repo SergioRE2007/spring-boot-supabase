@@ -1,13 +1,12 @@
-package com.example.alumnos;
+package com.example.restaurante;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-// clase principal que arranca la aplicacion Spring Boot
 @SpringBootApplication
-public class AlumnosApplication {
+public class RestauranteApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(AlumnosApplication.class, args);
+        SpringApplication.run(RestauranteApplication.class, args);
     }
 }

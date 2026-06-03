@@ -1,12 +1,13 @@
-# Spring Boot + Supabase
+# Restaurante - Spring Boot + Supabase
 
-App web con Spring Boot 4.0.4 y base de datos PostgreSQL en Supabase.
+App web de gestión de un restaurante con Spring Boot 4.0.4 y base de datos PostgreSQL en Supabase.
 
 ## Qué hace
 
-- API REST para alumnos, cursos y profesores
-- Dashboard web en `/dashboard`
-- Dashboard JSON en `/api/dashboard/resumen`
+- Gestión de chefs, categorías y platos desde formularios web
+- Dashboard con el menú completo del restaurante
+- API REST para chefs, categorías y platos
+- Dashboard JSON con totales en `/api/dashboard/resumen`
 
 ## Requisitos
 
@@ -32,8 +33,14 @@ Desde IntelliJ: **Maven → Plugins → spring-boot → spring-boot:run**
 
 | URL | Descripción |
 |-----|-------------|
-| `http://localhost:8080/dashboard` | Página web |
+| `http://localhost:8080/dashboard` | Página principal con el menú |
+| `http://localhost:8080/chefs` | Listado de chefs |
+| `http://localhost:8080/chefs/nuevo` | Formulario nuevo chef |
+| `http://localhost:8080/categorias` | Listado de categorías |
+| `http://localhost:8080/categorias/nuevo` | Formulario nueva categoría |
+| `http://localhost:8080/platos` | Listado de platos |
+| `http://localhost:8080/platos/nuevo` | Formulario nuevo plato |
 | `http://localhost:8080/api/dashboard/resumen` | JSON con totales |
-| `http://localhost:8080/api/alumnos` | API alumnos |
-| `http://localhost:8080/api/cursos` | API cursos |
-| `http://localhost:8080/api/profesores` | API profesores |
+| `http://localhost:8080/api/chefs` | API chefs |
+| `http://localhost:8080/api/categorias` | API categorías |
+| `http://localhost:8080/api/platos` | API platos |

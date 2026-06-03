@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Categorias</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', sans-serif; background: #fdf6ec; color: #333; }
+        header {
+            background: #8b1a1a; color: white;
+            padding: 20px 40px; display: flex; align-items: center; justify-content: space-between;
+        }
+        header h1 { font-size: 26px; }
+        nav a { color: #f5c842; text-decoration: none; margin-left: 20px; font-weight: bold; }
+        nav a:hover { text-decoration: underline; }
+        .contenedor { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+        .btn {
+            display: inline-block; background: #8b1a1a; color: white;
+            padding: 10px 20px; border-radius: 8px; text-decoration: none;
+            font-weight: bold; margin-bottom: 24px;
+        }
+        .btn:hover { background: #a52020; }
+        .seccion { background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); padding: 30px; }
+        .seccion h2 { font-size: 20px; margin-bottom: 20px; color: #8b1a1a; }
+        table { width: 100%; border-collapse: collapse; }
+        th { background: #8b1a1a; color: white; padding: 10px 14px; text-align: left; }
+        td { padding: 10px 14px; border-bottom: 1px solid #eee; }
+        tr:hover td { background: #fdf0e0; }
+        footer { text-align: center; padding: 30px; color: #999; font-size: 14px; margin-top: 40px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>&#127859; Mi Restaurante</h1>
+    <nav>
+        <a href="/dashboard">Inicio</a>
+        <a href="/platos">Platos</a>
+        <a href="/chefs">Chefs</a>
+        <a href="/categorias">Categorias</a>
+    </nav>
+</header>
+
+<div class="contenedor">
+    <a href="/categorias/nuevo" class="btn">+ Nueva categoria</a>
+
+    <div class="seccion">
+        <h2>Categorias</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="categoria : ${categorias}">
+                    <td th:text="${categoria.nombre}">-</td>
+                    <td th:text="${categoria.descripcion}">-</td>
+                </tr>
+                <tr th:if="${#lists.isEmpty(categorias)}">
+                    <td colspan="2" style="text-align:center; color:#999;">No hay categorias aun.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<footer>Mi Restaurante &mdash; Spring Boot + Supabase</footer>
+</body>
+</html>
